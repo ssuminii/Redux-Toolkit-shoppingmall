@@ -8,7 +8,7 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
 
 
 
-const Navbar = () => {
+const Navbar = ({authenticate}) => {
     const menuList = ['Woman', 'Men', 'Baby', 'Kids', 'H&M HOME', 'Sport', 'Sale', '지속가능성'];
 
     const navigate = useNavigate();
@@ -42,7 +42,7 @@ const Navbar = () => {
             <div className='login-button'>
                 <div className='login' onClick={goToLogin}>
                     <FontAwesomeIcon icon={faUser} />
-                    <div>로그인</div>
+                    <div>{authenticate === true ? '로그아웃' : '로그인'}</div>
                 </div>
                 <div>
                     <FontAwesomeIcon icon={faHeart} />
