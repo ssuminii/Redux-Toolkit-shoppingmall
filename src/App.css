@@ -203,6 +203,15 @@ body {
   margin-bottom: 15px;
 }
 
+.side-list li:hover {
+  cursor: pointer;
+  color: lightgray;
+}
+
+.faBar {
+  cursor: pointer;
+}
+
 /*  ≧ 768px (Desktop) */
 @media screen and (max-width: 768px) {
   .sideMenu {
