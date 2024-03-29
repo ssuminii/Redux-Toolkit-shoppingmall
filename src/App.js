@@ -21,7 +21,7 @@ import PrivateRoute from './\broute/PrivateRoute';
 
 function App() {
   // true -> Login ⭕️, false -> Login ❌
-  const [authenticate, setAthenticate] = useState(false);
+  const [authenticate, setAuthenticate] = useState(false);
 
   // 값이 변했는지 chech
   useEffect(() => {
@@ -30,10 +30,10 @@ function App() {
 
   return (
     <div>
-      <Navbar authenticate={authenticate} />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
       <Routes>
         <Route path="/" element={<ProductAll />} />
-        <Route path="/Login" element={<Login setAthenticate={setAthenticate} />} />
+        <Route path="/Login" element={<Login setAuthenticate={setAuthenticate} />} />
         <Route path="/Product/:id" element={<PrivateRoute authenticate={authenticate} />} />
       </Routes>
     </div>

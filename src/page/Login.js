@@ -2,18 +2,17 @@ import React from 'react'
 import { Form, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const Login = ({setAthenticate}) => {
+const Login = ({setAuthenticate}) => {
   const navigate = useNavigate();
   const loginUser = (event) => {
     event.preventDefault();
-    console.log('login user');
-    setAthenticate(true);
+    setAuthenticate(true);
     navigate('/');
-  }
+  };
 
   return (
     <div className='login-container'>
-      <Form onSubmit={(event)=>loginUser(event)} className='login-form'>
+      <Form onSubmit={(event)=> loginUser(event)} className='login-form'>
         <Form.Group className='mb-3' controlId='formBasicEmail'>
           <Form.Label>Email address</Form.Label>
           <Form.Control type='email' placeholder='Enter email' />
