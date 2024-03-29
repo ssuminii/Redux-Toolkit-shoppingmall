@@ -7,6 +7,7 @@ import ProductAll from './page/ProductAll';
 import ProductDetail from './page/ProductDetail';
 import Navbar from './component/Navbar';
 import PrivateRoute from './\broute/PrivateRoute';
+import SideMenu from './component/SideMenu';
 
 // 1. 전체 상품페이지, 상품 상세페이지, 로그인 페이지
 // 1-1. Navigation Bar
@@ -30,7 +31,12 @@ function App() {
 
   return (
     <div>
-      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      <div className='sideMenu'>
+        <SideMenu authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      </div>
+      <div className='navBar'>
+        <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate}/>
+      </div>
       <Routes>
         <Route path="/" element={<ProductAll />} />
         <Route path="/Login" element={<Login setAuthenticate={setAuthenticate} />} />

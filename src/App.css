@@ -186,3 +186,30 @@ body {
 #dropdown-basic-button:hover {
   color: lightgray;
 }
+
+/* Sidebar List */
+.sideMenu{
+  display: none;
+}
+
+.side-list {
+  width: 200px;
+  height: 95vh;
+  color: black;
+  padding: 0;
+}
+
+.side-list li {
+  margin-bottom: 15px;
+}
+
+/*  ≧ 768px (Desktop) */
+@media screen and (max-width: 768px) {
+  .sideMenu {
+    display: block;
+  }
+
+  .navBar {
+    display: none;
+  }
+}
