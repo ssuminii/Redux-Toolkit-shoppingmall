@@ -151,3 +151,38 @@ body {
 .login-plus button {
   margin-bottom: 10px;
 }
+
+/* Product Detail */
+.product-image {
+  display: block;
+  width: auto;
+  height: 300px;
+}
+
+.product-info {
+  padding-top: 20px;
+}
+
+.product-info div {
+  margin-bottom: 8px;
+}
+
+.product-title {
+  font-size: 26px;
+}
+
+.product-price {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#dropdown-basic-button {
+  background-color: transparent;
+  color: black;
+  border: none;
+  padding: 0;
+}
+
+#dropdown-basic-button:hover {
+  color: lightgray;
+}
