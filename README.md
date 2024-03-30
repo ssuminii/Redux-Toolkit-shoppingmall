@@ -2,6 +2,16 @@
 
 이 프로젝트는 React를 사용하여 간단한 반응형 쇼핑몰을 만든 프로젝트입니다. 사용자는 제품을 둘러보고, 검색할 수 있으며, 로그인 & 로그아웃이 가능합니다.
 
+## 스크린샷
+
+### Desktop
+
+![데스크탑 화면 스크린샷](./screenshot/desktop.png)
+
+### Mobile
+
+  <img src="./screenshot/mobile.png" width="auto" height="500"/>
+
 ## 기능
 
 - 제품 목록 불러오기
@@ -30,13 +40,3 @@
 이 프로젝트는 Netlify를 통해 배포되었습니다. 아래 링크를 클릭하여 확인해주세요.
 
 - <https://react-shoppingmall-hnm.netlify.app>
-
-## 스크린샷
-
-### Desktop
-
-![데스크탑 화면 스크린샷](./screenshot/desktop.png)
-
-### Mobile
-
-  <img src="./screenshot/mobile.png" width="auto" height="500"/>
