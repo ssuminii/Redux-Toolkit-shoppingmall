@@ -39,4 +39,4 @@
 
 ### Mobile
 
-  <img src="./screenshot/mobile.png" width="auto" height="300"/>
+  <img src="./screenshot/mobile.png" width="auto" height="500"/>
