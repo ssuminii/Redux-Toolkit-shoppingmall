@@ -28,9 +28,9 @@
 ## 배포
 
 이 프로젝트는 Netlify를 통해 배포되었습니다. 아래 링크를 클릭하여 확인해주세요.
-![Netlify 배포 링크](https://react-shoppingmall-hnm.netlify.app/)
+<https://react-shoppingmall-hnm.netlify.app>
 
 ## 스크린샷
 
 ![데스크탑 화면 스크린샷](./screenshot/desktop.png)
-![모바일 화면 스크린샷](./screenshot/mobile.png)
+![모바일 화면 스크린샷](<img src="./screenshot/mobile.png" width="auto" height="300"/>)
