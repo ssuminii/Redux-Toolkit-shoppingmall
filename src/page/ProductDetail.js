@@ -2,17 +2,17 @@ import React from 'react'
 import { Container, Row, Col, Dropdown, DropdownButton} from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { productAction } from '../redux/actions/productAction'
 
 const ProductDetail = () => {
+  const product = useSelector((state) => state.product.productDetail);
+  const dispatch = useDispatch();
   let {id} = useParams();
-  const [product, setProduct] = useState(null);
+  // const [product, setProduct] = useState(null);
 
   const getProductDetail = async () => {
-    let url = `https://my-json-server.typicode.com/ssuminii/React-Shoppingmall/products/${id}`;
-    let response = await fetch(url);
-    let data = await response.json();
-    console.log('data--------->',data)
-    setProduct(data);
+    dispatch(productAction.getProductDetail(id));
   };
 
   useEffect(() => {

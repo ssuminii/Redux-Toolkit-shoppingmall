@@ -5,11 +5,17 @@ import { faUser} from '@fortawesome/free-regular-svg-icons'
 import { faHeart} from '@fortawesome/free-regular-svg-icons'
 import { faCartShopping, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons'
+import { useSelector, useDispatch } from 'react-redux'
+import { authenticateAction } from '../redux/actions/authenticateAction'
 
 
 
 const Navbar = ({ authenticate, setAuthenticate }) => {
     const menuList = ['Woman', 'Men', 'Baby', 'Kids', 'H&M HOME', 'Sport', 'Sale', '지속가능성'];
+    const dispatch = useDispatch();
+
+    authenticate = useSelector((state) => state.auth.authenticate);
+
 
     const navigate = useNavigate();
     const goToLogin = () => {
@@ -22,10 +28,10 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
     }
 
     const logout = () => {
-        setAuthenticate(false);
+        dispatch(authenticateAction.logout(false));
         alert('로그아웃 되었습니다!');
         navigate('/');
-    }
+      };
 
     const search = (event) => {
         if(event.key === 'Enter') {

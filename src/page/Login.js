@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 // 함수 
 import { authenticateAction } from '../redux/actions/authenticateAction';
 
-const Login = ({setAuthenticate}) => {
+const Login = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
