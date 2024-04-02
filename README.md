@@ -41,4 +41,4 @@
 
 이 프로젝트는 Netlify를 통해 배포되었습니다. 아래 링크를 클릭하여 확인해주세요.
 
-- <https://react-shoppingmall-hnm.netlify.app>
+<!-- - <https://react-shoppingmall-hnm.netlify.app> -->
