@@ -1,10 +1,20 @@
-import {createSlice} from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { productAction } from '../actions/productAction';
 
 let initialState = {
-    productList: [],
-    product: [],
+  productList: [],
+  product: [],
+  isLoading: false,
 };
+
+const getProducts = createAsyncThunk(
+    'product/fetchAll',
+    async (searchQuery, thunkApi) => {
+        let url = `https://my-json-server.typicode.com/ssuminii/React-Shoppingmall/products?q=${searchQuery}`;
+        let response = await fetch(url);
+        return response.json();
+    }
+);
 
 // function productReducer(state = initialState, action) {
 //     let {type, payload} = action;
@@ -21,19 +31,34 @@ let initialState = {
 // export default productReducer
 
 const productSlice = createSlice({
-    name: 'product',
-    initialState,
-    reducers: {
-        getAllProducts(state, action) {
-            state.productList = action.payload.data;
-        },
-        getSingleProduct(state, action) {
-            state.productDetail = action.payload.data;
-        },
+  name: 'product',
+  initialState,
+  reducers: {
+    getAllProducts(state, action) {
+      state.productList = action.payload.data;
     },
+    getSingleProduct(state, action) {
+      state.productDetail = action.payload.data;
+    },
+  },
+  extraReducers: (builder) => {
+    // 대기
+    builder.addCase(getProducts.pending, (state) => {
+        state.isLoading = true;
+    })
+    // 성공
+    .addCase(getProducts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.productDetail = action.payload;
+    })
+    // 실패
+    .addCase(getProducts.rejected, (state) => {
+        state.isLoading = true;
+    })
+  }
 });
 
-console.log('ppp',productSlice);
+console.log('ppp', productSlice);
 
 export const productActions = productSlice.actions;
 export default productSlice.reducer;
