@@ -1,61 +1,63 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { productAction } from '../actions/productAction';
 
 let initialState = {
   productList: [],
   product: [],
   isLoading: false,
+  error: null,
 };
 
-const getProducts = createAsyncThunk(
+export const fetchProducts = createAsyncThunk(
     'product/fetchAll',
     async (searchQuery, thunkApi) => {
-        let url = `https://my-json-server.typicode.com/ssuminii/React-Shoppingmall/products?q=${searchQuery}`;
-        let response = await fetch(url);
-        return response.json();
+        try{
+            let url = `https://my-json-server.typicode.com/ssuminii/React-Shoppingmall/products?q=${searchQuery}`;
+            let response = await fetch(url);
+            return response.json();
+        }catch(error) {
+            thunkApi.rejectWithValue(error.message);
+        }
     }
 );
 
-// function productReducer(state = initialState, action) {
-//     let {type, payload} = action;
-//     switch(type) {
-//         case 'GET_PRODUCT_SUCCESS':
-//             return {...state, productList: payload.data};
-//         case 'GET_PRODUCT_DETAIL_SUCCESS':
-//             return {...state, productDetail: payload.data}
-//         default:
-//             return {...state};
-//     }
-// }
-
-// export default productReducer
+export const fetchProductsDetail = createAsyncThunk('product/fetchDetail', async (id, thunkApi) => {
+    try {
+      let url = `https://my-json-server.typicode.com/teddybearkim/hnm-final/products/${id}`;
+      let response = await fetch(url);
+      return await response.json();
+    }catch(error) {
+      thunkApi.rejectWithValue(error.message);
+    }
+  });
 
 const productSlice = createSlice({
-  name: 'product',
-  initialState,
-  reducers: {
-    getAllProducts(state, action) {
-      state.productList = action.payload.data;
-    },
-    getSingleProduct(state, action) {
-      state.productDetail = action.payload.data;
-    },
-  },
-  extraReducers: (builder) => {
-    // 대기
-    builder.addCase(getProducts.pending, (state) => {
-        state.isLoading = true;
+name: 'product',
+initialState,
+reducers: {},
+extraReducers: (builder) => {
+    builder.addCase(fetchProducts.pending, (state) => {
+    state.isLoading = true;
     })
-    // 성공
-    .addCase(getProducts.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.productDetail = action.payload;
+    .addCase(fetchProducts.fulfilled, (state, action) => {
+    state.isLoading = false;
+    state.productList = action.payload;
     })
-    // 실패
-    .addCase(getProducts.rejected, (state) => {
-        state.isLoading = true;
+    .addCase(fetchProducts.rejected, (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
     })
-  }
+    .addCase(fetchProductsDetail.pending, (state) => {
+    state.isLoading = true;
+    })
+    .addCase(fetchProductsDetail.fulfilled, (state, action) => {
+    state.isLoading = false;
+    state.productDetail = action.payload;
+    })
+    .addCase(fetchProductsDetail.rejected, (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+    })
+}
 });
 
 console.log('ppp', productSlice);
