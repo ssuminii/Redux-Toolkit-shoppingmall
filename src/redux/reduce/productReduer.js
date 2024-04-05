@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
+import { productAction } from '../actions/productAction';
 
 let initialState = {
     productList: [],
@@ -34,4 +35,5 @@ const productSlice = createSlice({
 
 console.log('ppp',productSlice);
 
+export const productActions = productSlice.actions;
 export default productSlice.reducer;

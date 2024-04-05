@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import authenticateReducer from './authenticateReducer';
-import productReducer from './productReduer';
+// import { combineReducers } from 'redux';
+// import authenticateReducer from './authenticateReducer';
+// import productReducer from './productReduer';
 
-export default combineReducers({
-    auth: authenticateReducer,
-    product: productReducer,
-});
+// export default combineReducers({
+//     auth: authenticateReducer,
+//     product: productReducer,
+// });
